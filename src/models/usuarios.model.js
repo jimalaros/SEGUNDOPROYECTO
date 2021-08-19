@@ -11,7 +11,7 @@ const usuarioSchema = new Schema({
         type: String,
         required: true
     },
-    correo: {
+    email: {
         type: String,
         required: true
     },
@@ -23,7 +23,7 @@ const usuarioSchema = new Schema({
         type: String,
         required: true
     },
-    contraseña: {
+    password: {
         type: String,
         required: true
     },
@@ -33,10 +33,10 @@ const usuarioSchema = new Schema({
     }
 });
 
-usuarioSchema.methods.EncriptarContraseña = async (contraseña) => {
+/**usuarioSchema.methods.EncriptarContraseña = async (contraseña) => {
     const salt = await bcrypt.genSalt(10);
     return bcrypt.hash(contraseña, salt);
-};
+};**/
 
 usuarioSchema.methods.CompararContraseñas = async function (contraseña) {
   return bcrypt.compare(contraseña, this.contraseña);

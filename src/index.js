@@ -6,7 +6,7 @@ import './basededatos';
 import usuariosRoutes from './routes/usuarios.routes';
 import productosRoutes from './routes/productos.routes';
 import ordenesRoutes from './routes/pedidos.routes';
-import MediosdePagoRoutes from './routes/MediodePago.routes';
+import MediosdePagoRoutes from './routes/MediosdePago.routes';
 import * as options from './utils/swagger';
 
 const swaggerSpecs = swaggerJSDoc(options.swaggerOptions);

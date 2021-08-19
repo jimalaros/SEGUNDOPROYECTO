@@ -11,7 +11,8 @@ export const ValidarUsuario = joi.object({
         .min(3)
         .max(30)
         .required(),
-    email: joi.string()
+    email: joi
+        .string()
         .email({
             minDomainSegments: 2,
             tlds: { allow: ['com', 'net', 'co'] },
@@ -28,6 +29,5 @@ export const ValidarUsuario = joi.object({
         .required(),
     password: joi.string()
         .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
-    repetir_contrasena: joi.ref('password'),
     Administrador: joi.boolean(),
 });

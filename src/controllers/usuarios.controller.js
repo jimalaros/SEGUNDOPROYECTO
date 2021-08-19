@@ -1,8 +1,9 @@
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 import Usuario from '../models/usuarios.model';
 import config from '../config';
-import jwt from 'jsonwebtoken';
-import loginSchema from '../Schemas/Login.schema';
-import ValidarUsuario from '../Schemas/usuarios.schema';
+import loginSchema from '../schemas/Login.schema';
+import ValidarUsuario from '../schemas/usuarios.schema';
 
 export const Usuarios = async (req,res) => {
     try {
@@ -13,32 +14,20 @@ export const Usuarios = async (req,res) => {
 
 export const CrearUsuario = async (req, res) => {
     try {
-        const {
+        const {nombre, apellido, email, telefono, direccion, password } = req.body;
+        const validación = await ValidarUsuario.validateAsync(req.body);
+        console.log(validación);
+
+        const usuario = new Usuario({
             nombre,
             apellido,
-            correo,
+            email,
             telefono,
             direccion,
-            contraseña
-        } = await ValidarUsuario.validateAsync(req.body);
-
-        const UsuarioRepetido = await Usuario.findOne({ correo });
-        if (UsuarioRepetido) {
-            res.status(400).json('El Correo ya existe en la base de datos');
-        } else {   
-            const usuario = new Usuario({
-                nombre,
-                apellido,
-                correo,
-                telefono,
-                direccion,
-                contraseña
-            });
-            // Para encriptar la contraseña del usuario
-            usuario.contraseña = await usuario.EncriptarContraseña(contraseña);  
-            await usuario.save();
-            res.status(201).json('Usuario creado con exito');
-        }
+            password: bcrypt.hashSync(password, 10)
+        });
+        await usuario.save();
+        res.status(201).json('Usuario creado con exito');
     } catch (error) { res.status(500).json(error); } 
 };
 
