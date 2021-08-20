@@ -1,0 +1,12 @@
+###
+POST http://localhost:5000/usuarios/nuevos
+Content-Type: application/json
+
+{
+    "nombre": "Jaao",
+    "apellido": "Aao",
+    "correo": "aao@gmail.com",
+    "telefono": 300000,
+    "direccion": "Hospital",
+    "contraseña": "123456"
+}

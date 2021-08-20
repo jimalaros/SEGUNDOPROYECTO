@@ -961,10 +961,10 @@ export const swaggerOptions = {
               "required": [
                 "nombre",
                 "apellido",
-                "email",
+                "correo",
                 "telefono",
                 "direccion",
-                "password"
+                "contraseña"
               ],
               "properties": {
                 "nombre": {
@@ -975,7 +975,7 @@ export const swaggerOptions = {
                   "type": "string",
                   "example": "A"
                 },
-                "email": {
+                "correo": {
                   "type": "string",
                   "example": "j@gmail.com"
                 },
@@ -987,7 +987,7 @@ export const swaggerOptions = {
                   "type": "string",
                   "example": "Hospital"
                 },
-                "password": {
+                "contraseña": {
                   "type": "string",
                   "example": "111111"
                 }, 

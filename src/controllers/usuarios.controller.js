@@ -3,7 +3,6 @@ import bcrypt from 'bcryptjs';
 import config from '../config';
 import Usuario from '../models/usuarios.model';
 
-
 export const Usuarios = async (req,res) => {
     try {
         const usuarios = await Usuario.find();
@@ -13,44 +12,47 @@ export const Usuarios = async (req,res) => {
 
 export const CrearUsuario = async (req, res) => {
     try {
-        const { nombre, apellido, email, telefono, direccion, password, administrador } = req.body;
-        if( nombre && apellido && email && telefono && direccion && password )
-        { 
-            if(administrador)
-            {
-                const nuevoUsuario = new Usuario ({
-                    nombre,
-                    apellido,
-                    email,
-                    telefono,
-                    direccion,
-                    password: bcrypt.hashSync(password, 10),
-                    administrador,
-                });
-                await nuevoUsuario.save();
-                res.status(201).json('Usuario creado con exito');
+        const { nombre, apellido, correo, telefono, direccion, contraseña, administrador } = req.body;
+        if (nombre && apellido && correo && telefono && direccion && contraseña) {
+            const UsuarioRepetido = await Usuario.findOne({ correo });
+            if (UsuarioRepetido) {
+                res.status(400).json("El Correo ya existe en la base de datos");
             } else {
-                const usuario = new Usuario({
-                    nombre,
-                    apellido,
-                    email,
-                    telefono,
-                    direccion,
-                    password: bcrypt.hashSync(password, 10),
-                }); 
-                await usuario.save();
-                res.status(201).json('Usuario creado con exito');
+                if (administrador != false) {
+                    const usuario = new Usuario({
+                        nombre,
+                        apellido,
+                        correo,
+                        telefono,
+                        direccion,
+                        contraseña: bcrypt.hashSync(contraseña, 10),
+                        administrador
+                    });
+                    await usuario.save();
+                    res.status(201).json("Usuario creado con exito");
+                } else {
+                    const usuario = new Usuario({
+                        nombre,
+                        apellido,
+                        correo,
+                        telefono,
+                        direccion,
+                        contraseña: bcrypt.hashSync(contraseña, 10)
+                    });  
+                    await usuario.save();
+                    res.status(201).json("Usuario creado con exito");
+                }
             }
-        } else { res.status(400).json('Faltan datos'); }
+        } else { res.status(400).json("Faltan datos"); }
     } catch (error) { res.status(404).json(error); } 
 };
 
 export const InicioSesion = async(req,res) => {
     try {
-        const { email, password } = req.body;
-        if (email && password) {
-            const usuario = await Usuario.findOne({ email: req.body.email });
-            const contraseña = bcrypt.compare(req.body.password, usuario.password);
+        const { correo, contraseña } = req.body;
+        if (correo && contraseña) {
+            const usuario = await Usuario.findOne({ correo: req.body.correo });
+            const contraseña = bcrypt.compare(req.body.contraseña, usuario.contraseña);
             if (!usuario && !contraseña) {
                 return res.status(401).send({ auth: false, token: null });
             } else {
