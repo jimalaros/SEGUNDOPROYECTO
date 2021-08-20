@@ -8,11 +8,11 @@ import { ValidaciónLogin } from '../middlewares/ValidaciónLogin.middleware';
 
 const router = Router();
 
-router.get('/', Verificar, Usuarios.Usuarios);
+router.get('/', Usuarios.Usuarios);
 
-router.post('/nuevos', Repetido, Validación, Usuarios.CrearUsuario);
+router.post('/nuevos', Repetido, Usuarios.CrearUsuario);
 
-router.post('/Login', ValidaciónLogin, Usuarios.InicioSesion);
+router.post('/Login', Usuarios.InicioSesion);
 
 router.delete('/Eliminar/:id', Administrador, Usuarios.EliminarUsuarios);
 
