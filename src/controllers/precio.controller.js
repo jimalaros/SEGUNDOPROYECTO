@@ -1,8 +1,6 @@
 import Producto from '../models/productos.model';
 
 export async function Precio(n, nombres, cantidades) {
-    //const n = cantidades.length;
-
     const vector = await Producto.find({nombre: {$in: nombres}});
     const prices = vector.map(price => price.precio);
 

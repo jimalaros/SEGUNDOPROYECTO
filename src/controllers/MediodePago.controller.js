@@ -14,14 +14,14 @@ export const MediosdePagoxDefecto = async (req, res) => {
             new MediodePago({ nombre: 'PSE' }).save(),
         ]);
         res.json(mediosdepago);
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };
 
 export const MediosdePago = async (req,res) => {
     try {
         const mediosdepago = await MediodePago.find();
         res.json(mediosdepago);
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };
 
 export const CrearMediodePago = async (req, res) => {
@@ -37,7 +37,7 @@ export const CrearMediodePago = async (req, res) => {
                 res.status(201).json({ msg: 'Medio de Pago creado con exito' });
             }
         } else { res.status(400).json({ msg: 'Faltan datos' }); }
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };
 
 export const ActualizarMediosdePago = async (req, res) => {
@@ -50,7 +50,7 @@ export const ActualizarMediosdePago = async (req, res) => {
             await MediodePago.findByIdAndUpdate(id, updates, options);
             res.status(200).json({ msg: 'Medio de Pago editado con exito' });
         } else { res.status(400).json({ msg: 'Faltan datos' }); }
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };
 
 export const EliminarMediosdePago = async (req, res) => {
@@ -58,5 +58,5 @@ export const EliminarMediosdePago = async (req, res) => {
         const { id } = req.params;
         await MediodePago.findByIdAndDelete(id);
         res.status(200).json({ msg: 'El medio de pago fue eliminado con exito' });
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };

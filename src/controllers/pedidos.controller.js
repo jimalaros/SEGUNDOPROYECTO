@@ -10,7 +10,7 @@ export const Pedidos = async (req,res) => {
         const pedidos = await Pedido.find();
         if(pedidos) { res.json(pedidos) }
         else {res.status(400).json({msg: 'Faltan Datos'})}
-    } catch (error) { res.status(500).json(error); } 
+    } catch (error) { res.status(404).json(error); }
 };
 
 export const CrearOrden = async (req,res) =>
@@ -35,7 +35,7 @@ export const CrearOrden = async (req,res) =>
             res.status(201).json({msg: 'Datos de la orden creados con exito'});
         }
         else { res.status(401).send({ auth: false, msg: "Ha olvidado el token" }); }
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };
 
 export const Ordenar = async (req,res) =>
@@ -52,7 +52,7 @@ export const Ordenar = async (req,res) =>
             await Agregar.save();
             res.status(201).json({msg: 'Pedido creado con exito'});     
         } else {res.status(400).json({msg: 'Faltan Datos'}); }
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };
 
 export const ActualizarPedidos = async (req, res) => {
@@ -72,7 +72,7 @@ export const ActualizarPedidos = async (req, res) => {
                 res.status(200).json({msg: 'Pedido actualizado con exito'}); 
             } else {res.status(400).json({msg: 'Faltan Datos'}); }
         } else {res.status(400).json({msg: 'Faltan Datos'}); }    
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };
   
 export const EliminarPedidos = async (req, res) => {
@@ -80,5 +80,5 @@ export const EliminarPedidos = async (req, res) => {
         const { id } = req.params;
         await Pedido.findByIdAndDelete(id);
         res.status(200).json({msg: "Pedido eliminado con exito"});    
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };

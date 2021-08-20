@@ -16,14 +16,14 @@ export const ProductosxDefecto = async (req, res) => {
             new Producto({ nombre: 'Agua', precio: 5000 }).save(),
         ]);
         res.json(productos);
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };
 
 export const Productos = async (req,res) => {
     try {
         const productos = await Producto.find();
         res.json(productos)
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };
 
 export const CrearProducto = async (req, res) => {
@@ -38,7 +38,7 @@ export const CrearProducto = async (req, res) => {
                 res.status(201).json({ msg: 'Producto creado con exito' });
             }
         } else { res.status(400).json({ msg: 'Faltan datos' }); }
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };
 
 export const ActualizarProductos = async (req, res) => {
@@ -52,7 +52,7 @@ export const ActualizarProductos = async (req, res) => {
             res.status(200).json({ msg: 'Producto editado con exito' });
         }
         else { res.status(400).json({ msg: 'Faltan datos' }); }
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };
 
 export const EliminarProductos = async (req, res) => {
@@ -62,5 +62,5 @@ export const EliminarProductos = async (req, res) => {
             await Producto.findByIdAndDelete(id);
             res.status(200).json({msg: 'El producto fue eliminado con exito' });
         } else { res.status(400).json({ msg: 'Faltan datos' }); }
-    } catch (error) { res.status(500).json(error); }
+    } catch (error) { res.status(404).json(error); }
 };

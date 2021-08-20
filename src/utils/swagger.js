@@ -990,21 +990,25 @@ export const swaggerOptions = {
                 "password": {
                   "type": "string",
                   "example": "111111"
+                }, 
+                "administrador": {
+                  "type": "boolean",
+                  "example": false
                 }
               }
             },
             "UsuarioLogin": {
               "type": "object",
               "required": [
-                "correo",
-                "contraseña"
+                "email",
+                "password"
               ],
               "properties": {
-                "correo": {
+                "email": {
                   "type": "string",
                   "example": "j.j@gmail.com"
                 },
-                "contraseña": {
+                "password": {
                   "type": "string",
                   "example": "111111"
                 }

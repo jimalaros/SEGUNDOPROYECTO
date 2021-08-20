@@ -1,7 +1,5 @@
 import { Schema, model } from 'mongoose';
 
-import bcrypt from 'bcryptjs';
-
 const usuarioSchema = new Schema({
     nombre: {
         type: String,
@@ -33,13 +31,13 @@ const usuarioSchema = new Schema({
     }
 });
 
-/**usuarioSchema.methods.EncriptarContraseña = async (contraseña) => {
+/**usuarioSchema.methods.EncriptarContraseña = async (password) => {
     const salt = await bcrypt.genSalt(10);
-    return bcrypt.hash(contraseña, salt);
-};**/
-
-usuarioSchema.methods.CompararContraseñas = async function (contraseña) {
-  return bcrypt.compare(contraseña, this.contraseña);
+    return bcrypt.hash(password, salt);
 };
+
+usuarioSchema.methods.CompararContraseñas = async function (password) {
+  return bcrypt.compare(password, this.password);
+};**/
 
 export default model('Usuario', usuarioSchema);

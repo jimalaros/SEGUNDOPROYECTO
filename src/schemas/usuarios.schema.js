@@ -29,5 +29,5 @@ export const ValidarUsuario = joi.object({
         .required(),
     password: joi.string()
         .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
-    Administrador: joi.boolean(),
+    administrador: joi.boolean(),
 });
