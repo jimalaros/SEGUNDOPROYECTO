@@ -14,6 +14,6 @@ router.post('/nuevos', Repetido, Usuarios.CrearUsuario);
 
 router.post('/Login', Usuarios.InicioSesion);
 
-router.delete('/Eliminar/:id', Administrador, Usuarios.EliminarUsuarios);
+router.delete('/Eliminar/:id', Usuarios.EliminarUsuarios);
 
 export default router;
