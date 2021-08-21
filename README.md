@@ -49,8 +49,9 @@ npm test
 npm start
 ```
 
-5. Dirigirse a la documentación de Swagger en el siguiente [link](https://localhost:5000/api-docs/)
+5. Dirigirse a la documentación de Swagger en el siguiente [link](http://localhost:5000/api-docs/)
 
+Importante: Para que la página de swagger cargue correctamente, tendrás que ejecutar el comando "npm start"
 
 6. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API, de la siguiente forma:
 
