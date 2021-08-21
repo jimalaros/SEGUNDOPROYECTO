@@ -50,8 +50,8 @@ npm start
 
 ```
 {
-    "correo":"h@gmail.com",
-    "contraseña":"2222"
+    "correo":"jimalaros25@gmail.com",
+    "contraseña":"12345"
 }
 ```
 
