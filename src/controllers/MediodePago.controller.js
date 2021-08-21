@@ -1,23 +1,6 @@
 import MediodePago from '../models/MediodePago.model';
 
-export const MediosdePagoxDefecto = async (req, res) => {
-    try {
-        const contador = await MediodePago.estimatedDocumentCount();
-        // Verificación de medios de pago existentes
-        if (contador > 0) return;
-        // Medios depago por defecto
-        const mediosdepago = await Promise.all([
-            new MediodePago({ nombre: 'Efectivo' }).save(),
-            new MediodePago({ nombre: 'Tarjeta de credito' }).save(),
-            new MediodePago({ nombre: 'Datafono' }).save(),
-            new MediodePago({ nombre: 'Nequi' }).save(),
-            new MediodePago({ nombre: 'PSE' }).save(),
-        ]);
-        res.json(mediosdepago);
-    } catch (error) { res.status(404).json(error); }
-};
-
-export const MediosdePago = async (req,res) => {
+export const MediosdePago = async (req, res) => {
     try {
         const mediosdepago = await MediodePago.find();
         res.json(mediosdepago);

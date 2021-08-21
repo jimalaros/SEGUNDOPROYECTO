@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import config from '../config';
 import Usuario from '../models/usuarios.model';
 
-export const Usuarios = async (req,res) => {
+export const Usuarios = async (req, res) => {
     try {
         const usuarios = await Usuario.find();
         res.json(usuarios);
@@ -47,7 +47,7 @@ export const CrearUsuario = async (req, res) => {
     } catch (error) { res.status(404).json(error); } 
 };
 
-export const InicioSesion = async(req,res) => {
+export const InicioSesion = async (req, res) => {
     try {
         const { correo, contraseña } = req.body;
         if (correo && contraseña) {

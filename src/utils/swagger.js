@@ -577,6 +577,21 @@ export const swaggerOptions = {
                       }
                     }
                   }
+                },
+                "400": {
+                  "description": "Bad Request",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "err": {
+                            "type": "string",
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -653,55 +668,6 @@ export const swaggerOptions = {
                       }
                     }
                   }
-                }
-              }
-            }
-          },
-          "/pedidos/estadoPedido/{id}": {
-            "put": {
-              "tags": [
-                "Pedidos"
-              ],
-              "summary": "Para que los administradores cambien estados de los pedidos",
-              "description": "Para cambiar los estados de los pedidos",
-              "parameters": [
-                {
-                  "in": "path",
-                  "name": "id",
-                  "required": true,
-                  "schema": {
-                    "type": "number",
-                    "example": 1
-                  }
-                }
-              ],
-              "requestBody": {
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "$ref": "#/components/schemas/Estado"
-                    }
-                  }
-                }
-              },
-              "responses": {
-                "200": {
-                  "description": "Ok",
-                  "content": {
-                    "application/json": {
-                      "schema": {
-                        "type": "object",
-                        "properties": {
-                          "msg": {
-                            "type": "string",
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "401": {
-                  "description": "Unauthorized",
                 }
               }
             }
@@ -1000,15 +966,15 @@ export const swaggerOptions = {
             "UsuarioLogin": {
               "type": "object",
               "required": [
-                "email",
-                "password"
+                "correo",
+                "contraseña"
               ],
               "properties": {
-                "email": {
+                "correo": {
                   "type": "string",
                   "example": "j.j@gmail.com"
                 },
-                "password": {
+                "contraseña": {
                   "type": "string",
                   "example": "111111"
                 }
@@ -1069,24 +1035,6 @@ export const swaggerOptions = {
                 "estado": {
                   "type": "string",
                   "example": "Abierto"
-                }
-              }
-            },
-            "Pedidoxid": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/Pedido"
-              }
-            },
-            "Estado": {
-              "type": "object",
-              "required": [
-                "Estado",
-              ],
-              "properties": {
-                "estado": {
-                  "type": "string",
-                  "example": "Enviado"
                 }
               }
             }

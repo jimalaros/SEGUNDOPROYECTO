@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 
 const MediodePagoSchema = new Schema({
-    mediodepago: {
+    nombre: {
         type: String,
         required: true
     }

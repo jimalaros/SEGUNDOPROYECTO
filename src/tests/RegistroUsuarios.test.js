@@ -25,27 +25,26 @@ describe('Registro de usuarios', () => {
         .send(data)
         .end((err, response) => {
           response.should.have.status(201);
-          response.should.be.an('string');
-          done();
-        });
-    });
-    
-    it("respond with 400 on bad request", (done) => {
-      const data = {};
-      chai.request(app)
-        .post('/usuarios/nuevos')
-        .send(data)
-        .end((err, response) => {
-          response.should.have.status(400);
-          response.should.be.an('string');
           done();
         });
     });
 
     after (async () => {
-      await Usuario.deleteOne({ correo: data.correo });
+      await Usuario.deleteOne({ correo: 'jaaao@gmail.com'});
     });
+  });
 
+  describe("POST /usuarios/nuevos", () => {  
+    it("respond with 400 on bad request", (done) => {
+      const dataempty = {};
+      chai.request(app)
+        .post('/usuarios/nuevos')
+        .send(dataempty)
+        .end((err, response) => {
+          response.should.have.status(400);
+          done();
+        });
+    });
   });
 });
 

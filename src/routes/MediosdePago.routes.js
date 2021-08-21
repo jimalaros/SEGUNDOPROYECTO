@@ -1,14 +1,15 @@
 import { Router } from 'express';
 import * as MediosdePago from '../controllers/MediodePago.controller';
+import { Administrador } from '../middlewares/administrador.middleware';
 
 const router = Router();
 
-router.get('/', MediosdePago.MediosdePago);
+router.get('/', Administrador, MediosdePago.MediosdePago);
 
-router.post('/nuevos', MediosdePago.CrearMediodePago);
+router.post('/nuevos', Administrador, MediosdePago.CrearMediodePago);
 
-router.put('/:id', MediosdePago.ActualizarMediosdePago);
+router.put('/:id', Administrador, MediosdePago.ActualizarMediosdePago);
 
-router.delete('/Eliminar/:id', MediosdePago.EliminarMediosdePago);
+router.delete('/Eliminar/:id', Administrador, MediosdePago.EliminarMediosdePago);
 
 export default router;
