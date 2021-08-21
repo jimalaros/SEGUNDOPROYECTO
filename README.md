@@ -31,22 +31,28 @@ npm i express dotenv bcryptjs jest supertest helmet jsonwebtoken mongoose swagge
 npm i @babel/core @babel/cli @babel/node @babel/preset-env @babel/polyfill
 ```
 
-2. Para ejecutar el test del endpoint "Registro de usuarios", usa el siguiente comando:
+2. Antes de ejecutar la API o los test, tendrás que generar la carpeta dist, ejecutando el siguiente comando en consola:
+
+```
+npx babel src --out-dir dist
+```
+
+3.  Después de generar la carpeta "dist", podrás ejecutar el test del endpoint "Registro de usuarios", usando el siguiente comando:
 
 ```
 npm test
 ```
 
-3. Para ejecutar la API, usa el siguiente comando:
+4. Sespués de generar la carpeta "dist", podrás ejecutar la API, usando el siguiente comando:
 
 ```
 npm start
 ```
 
-4. Dirigirse a la documentación de Swagger en el siguiente [link](https://localhost:5000/api-docs/)
+5. Dirigirse a la documentación de Swagger en el siguiente [link](https://localhost:5000/api-docs/)
 
 
-5. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API, de la siguiente forma:
+6. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API, de la siguiente forma:
 
 ```
 {
