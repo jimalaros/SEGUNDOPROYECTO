@@ -17,11 +17,17 @@ _Estas instrucciones te permitirán correr el proyecto y realizar las pruebas co
 
 1. Descarga el repositorio en este [link](https://github.com/jimalaros/SEGUNDOPROYECTO) e instala los packages como se muestra a continuación.
 
+2. Al abrir este proyecto, ejecuta en consola el siguiente comando:
+
 ```
-npm init --y
+cd SEGUNDOPROYECTO-master
 ```
 
 * Luego instala los siguientes paquetes para que la API funcione correctamente
+
+```
+npm init --y
+```
 
 ```
 npm i express dotenv bcryptjs jest supertest helmet jsonwebtoken mongoose swagger-jsdoc swagger-ui-express chai chai-http regenerator-runtime
@@ -31,29 +37,46 @@ npm i express dotenv bcryptjs jest supertest helmet jsonwebtoken mongoose swagge
 npm i @babel/core @babel/cli @babel/node @babel/preset-env @babel/polyfill
 ```
 
-2. Antes de ejecutar la API o los test, tendrás que generar la carpeta dist, ejecutando el siguiente comando en consola:
+3. Editar el objeto "scripts" que viene por defecto en el packagejson por el siguiente:
+
+"scripts": {
+    "dev": "nodemon src/index.js --exec babel-node",
+    "build": "babel src --out-dir dist",
+    "start": "node dist/index.js",
+    "test": "mocha dist/tests/RegistroUsuarios.test.js --exit"
+  },
+
+4. Antes de ejecutar la API o los test, tendrás que generar la carpeta dist, ejecutando el siguiente comando en consola:
 
 ```
 npx babel src --out-dir dist
 ```
 
-3.  Después de generar la carpeta "dist", podrás ejecutar el test del endpoint "Registro de usuarios", usando el siguiente comando:
+5. Antes de ejecutar la API y el test, tendrás que ejecutar el siguiente comando en otra consola:
+
+```
+mongod
+```
+
+_Lo anterior es para que la base de datos se ejecute corecctamente:_
+
+6.  Después de generar la carpeta "dist", podrás ejecutar el test del endpoint "Registro de usuarios", usando el siguiente comando:
 
 ```
 npm test
 ```
 
-4. Sespués de generar la carpeta "dist", podrás ejecutar la API, usando el siguiente comando:
+7. Sespués de generar la carpeta "dist", podrás ejecutar la API, usando el siguiente comando:
 
 ```
 npm start
 ```
 
-5. Dirigirse a la documentación de Swagger en el siguiente [link](http://localhost:5000/api-docs/)
+8. Dirigirse a la documentación de Swagger en el siguiente [link](http://localhost:5000/api-docs/)
 
 Importante: Para que la página de swagger cargue correctamente, tendrás que ejecutar el comando "npm start"
 
-6. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API, de la siguiente forma:
+9. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API, de la siguiente forma:
 
 ```
 {
