@@ -39,12 +39,14 @@ npm i @babel/core @babel/cli @babel/node @babel/preset-env @babel/polyfill
 
 3. Editar el objeto "scripts" que viene por defecto en el packagejson por el siguiente:
 
+```
 "scripts": {
     "dev": "nodemon src/index.js --exec babel-node",
     "build": "babel src --out-dir dist",
     "start": "node dist/index.js",
     "test": "mocha dist/tests/RegistroUsuarios.test.js --exit"
   },
+```
 
 4. Antes de ejecutar la API o los test, tendrás que generar la carpeta dist, ejecutando el siguiente comando en consola:
 
