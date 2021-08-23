@@ -60,15 +60,15 @@ npx babel src --out-dir dist
 mongod
 ```
 
-_Lo anterior es para que la base de datos se ejecute corecctamente:_
+_Lo anterior es para que la base de datos se ejecute corectamente_
 
-6.  Después de generar la carpeta "dist", podrás ejecutar el test del endpoint "Registro de usuarios", usando el siguiente comando:
+6.  Después de generar la carpeta "dist" y tener la base de datos corriendo, podrás ejecutar el test del endpoint "Registro de usuarios", usando el siguiente comando:
 
 ```
 npm test
 ```
 
-7. Sespués de generar la carpeta "dist", podrás ejecutar la API, usando el siguiente comando:
+7. Después de generar la carpeta "dist" y tener la base de datos corriendo, podrás ejecutar la API, usando el siguiente comando:
 
 ```
 npm start
