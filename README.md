@@ -57,8 +57,6 @@ npm start
 
 8. Dirigirse a la documentación de Swagger en el siguiente [link](http://localhost:5000/api-docs/)
 
-Importante: Para que la página de swagger cargue correctamente, tendrás que ejecutar el comando "npm start"
-
 9. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API, de la siguiente forma:
 
 ```
@@ -123,7 +121,11 @@ _Para encontrar los medios de pago que están almacenados, debes dirigirte al "g
 
 _Recordatorio_
 
-El único usuario administrador es jimalaros25@gmail.com y su clave es 12345.
+El único usuario administrador es:
+
+| email                | pass |
+|----------------------|------|
+| jimalaros25@mail.com |12345 |
 
 ## Construido con 🛠️
 
