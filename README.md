@@ -125,7 +125,7 @@ El único usuario administrador es:
 
 |       correo         | contraseña |
 |----------------------|------------|
-| jimalaros25@mail.com |   12345    |
+| jimalaros25@mail.com |       12345|
 
 ## Construido con 🛠️
 
