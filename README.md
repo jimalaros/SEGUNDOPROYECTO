@@ -23,29 +23,10 @@ _Estas instrucciones te permitirán correr el proyecto y realizar las pruebas co
 cd SEGUNDOPROYECTO-master
 ```
 
-* Luego instala los siguientes paquetes para que la API funcione correctamente
+3. Luego instala los paquetes para que la API funcione correctamente, ejecutando en consola el siguiente comando:
 
 ```
-npm init --y
-```
-
-```
-npm i express dotenv bcryptjs jest supertest helmet jsonwebtoken mongoose swagger-jsdoc swagger-ui-express chai chai-http regenerator-runtime
-```
-
-```
-npm i @babel/core @babel/cli @babel/node @babel/preset-env @babel/polyfill
-```
-
-3. Editar el objeto "scripts" que viene por defecto en el packagejson por el siguiente:
-
-```
-"scripts": {
-    "dev": "nodemon src/index.js --exec babel-node",
-    "build": "babel src --out-dir dist",
-    "start": "node dist/index.js",
-    "test": "mocha dist/tests/RegistroUsuarios.test.js --exit"
-  },
+npm install
 ```
 
 4. Antes de ejecutar la API o los test, tendrás que generar la carpeta dist, ejecutando el siguiente comando en consola:
