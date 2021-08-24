@@ -123,7 +123,6 @@ _Recordatorio_
 
 El único usuario administrador es:
 
-| email                | pass |
 |----------------------|------|
 | jimalaros25@mail.com |12345 |
 
