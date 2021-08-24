@@ -1,4 +1,3 @@
-  
 import mongoose from 'mongoose';
 import 'regenerator-runtime/runtime';
 
