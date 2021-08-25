@@ -17,30 +17,54 @@ _Estas instrucciones te permitirán correr el proyecto y realizar las pruebas co
 
 1. Descarga el repositorio en este [link](https://github.com/jimalaros/SEGUNDOPROYECTO) e instala los packages como se muestra a continuación.
 
-```
-npm init -y
-```
+2. Al abrir este proyecto, ejecuta en consola el siguiente comando:
 
 ```
-npm i express dotenv bcryptjs jest supertest helmet jsonwebtoken moongose swagger-jsdoc swagger-ui-express 
+cd SEGUNDOPROYECTO-master
 ```
 
+3. Luego instala los paquetes para que la API funcione correctamente, ejecutando en consola el siguiente comando:
+
 ```
-npm i @babel/core @babel/cli @babel/node @babel/preset-env
+npm install
 ```
 
-2. Ejecutar el proyecto con el siguiente comando:
+4. Antes de ejecutar la API o los test, tendrás que generar la carpeta dist, ejecutando el siguiente comando en consola:
+
+```
+npx babel src --out-dir dist
+```
+
+5. Antes de ejecutar la API y el test, tendrás que ejecutar el siguiente comando en otra consola:
+
+```
+mongod
+```
+
+_Lo anterior es para que la base de datos se ejecute corectamente_
+
+6.  Después de generar la carpeta "dist" y tener la base de datos corriendo, podrás ejecutar el test del endpoint "Registro de usuarios", usando el siguiente comando:
+
+```
+npm test
+```
+
+7. Después de generar la carpeta "dist" y tener la base de datos corriendo, podrás ejecutar la API, usando el siguiente comando:
 
 ```
 npm start
 ```
 
-3. Dirigirse a la documentación de Swagger en el siguiente [link](https://localhost:5000/api-docs/)
+8. Dirigirse a la documentación de Swagger en el siguiente [link](http://localhost:5000/api-docs/)
 
+9. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API, de la siguiente forma:
 
-4. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API.
-
-## Las rutas
+```
+{
+    "correo":"jimalaros25@gmail.com",
+    "contraseña":"12345"
+}
+```
 
 ### Ruta de USUARIOS
 
@@ -48,30 +72,20 @@ _Para crear un usuario tendrás que llenar todos los datos de este esquema en el
 
 ```
 {
-    "usuario": "H",
-    "nombre": "R",
-    "apellido": "Orozco",
-    "correo": "h@gmail.com",
-    "telefono": "321850",
+    "nombre": "Jaao",
+    "apellido": "A",
+    "correo": "j@gmail.com",
+    "telefono": 321850,
     "direccion": "Calle 15 # 22-02",
     "contraseña": "2222"
+    "administrador": false
 }
 ```
-Importante: El rol de los usuarios nuevos siempre va a ser Usuario y no Administrador (el administrador por defecto es "False").
-
-_Para iniciar sesión con el nuevo usuario en la ruta "Login", tendrás que llenar los datos de este esquema:_
-
-```
-{
-    "correo":"h@gmail.com",
-    "contraseña":"2222"
-}
-```
-Importante: Al registrar un nuevo usuario, este obtendrá un token con el cuál podrás acceder a las demás rutas.
+Importante: El rol de los usuarios nuevos siempre va a ser Usuario y no Administrador (el administrador por defecto es "False"), puedes omitir el "administrador" y enviar el body con los otros 6 datos, pero si necesitas crear otro administrador, solo colocas "administrador": true.
 
 ### Ruta PEDIDOS
 
-_Para crear los pedidos, se trabajo con un concepto denominado nested documents, por lo cuál tendrás que loggearte (Ruta login) y en la ruta Crear (Pedidos) obtendrás algo como lo siguiente:_
+_Para crear los pedidos, se trabajo con un concepto denominado nested documents, por lo cuál tendrás que loggearte (Ruta login) y en la ruta Crear (Pedidos) darle ejecutar, no tienes que enviar un body, haciendo esto obtendrás algo como lo siguiente:_
 
 ```
 {
@@ -94,30 +108,32 @@ _Para llenar el array vacío de productos, tendrás que pasarle el id generado a
 
 De la siguiente manera: 
 
-* Para el body, el vector "nombres" se puede llenar con tantos nombres de productos como se desee, aunque hay unos predeterminados en el sistema, se pueden repetir, siempre y cuando estos existan dentro de la lista de productos, también es importante recalcar que se debe respetar la escritura, cualquier producto escrito de mala manera, hará que el programa presente un error del tipo: _cannot calculated price of undefined_.
+* Para el body, el vector "nombres" se puede llenar con tantos nombres de productos como se desee, siempre y cuando estos existan dentro de la lista de productos, también es importante recalcar que se debe respetar la escritura, cualquier producto escrito de mala manera, hará que el programa presente un error del tipo: _cannot calculated price of undefined_.
 
-* El vector "cantidades" tiene que tener la misma longitud del vector "nombres", es decir, cada producto escrito en el vector "nombres" debe tener su cantidad correspondiente.
+_Para encontrar los productos que están almacenados, debes dirigirte al "get" que encontrarás en productos_.
 
-* IMPORTANTE: Si el estado del pedido se envía como "cerrado", en la ruta de edición, no se podrá hacer nada, para editar el pedido el estado tiene que decir "abierto".
+* El vector "nombres" tiene que tener la misma longitud del vector "cantidades", es decir, cada producto escrito en el vector "nombres" debe tener su cantidad correspondiente.
 
-_Hay dos maneras de ver tus pedidos:_
+* IMPORTANTE: Si el estado del pedido se envía como "cerrado", en la ruta de edición, no se podrá hacer nada, para editar el pedido el estado tiene que decir "Abierto".
+* IMPROTANTE: Si se envia un medio de pago que no existe, la API no creará el pedido, generará un error.
 
-1. En la ruta de pedidos, los administradores podrán observar todos los pedidos hechos por todos los usuarios.
-
-_Hay dos rutas de edición de pedidos:_
-
-1. Para que los usuarios editen, recuerda que se crea pedido por id de usuario y se edita de la misma manera, con el id del usuario.
-2. La ruta para que los administradores cambien el estado del pedido de los usuarios.
+_Para encontrar los medios de pago que están almacenados, debes dirigirte al "get" que encontrarás en medios de pago_.
 
 _Recordatorio_
 
-El único usuario administrador es jimalaros25@gmail.com y su clave es 12345.
+El único usuario administrador es:
+
+|       correo         | contraseña |
+|----------------------|------------|
+| jimalaros25@mail.com |       12345|
 
 ## Construido con 🛠️
 
 * NodeJS
 * Express
 * Swagger
+* Mocha
+* JWT
 
 ## Autores ✒️
 
