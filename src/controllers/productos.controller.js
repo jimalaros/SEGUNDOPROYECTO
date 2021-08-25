@@ -1,5 +1,5 @@
 import Producto from '../models/productos.model';
-import cliente from '../cache';
+import cliente from '../redis';
 
 export const ProductosxDefecto = async (req, res) => {
     try {
@@ -23,9 +23,8 @@ export const ProductosxDefecto = async (req, res) => {
 export const Productos = async (req,res) => {
     try {
         const productos = await Producto.find();
-        let products = await redisClient.get(productos);
-        products = JSON.parse(products);
-        if (products !== null ) return res.json({products});
+        cliente.setex('productos', 300, JSON.stringify(productos));
+        res.json(productos);
     } catch (error) { res.status(404).json(error); }
 };
 
