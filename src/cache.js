@@ -1,7 +1,7 @@
 import redis from 'redis';
 import {promisify} from 'util';
 
-const cliente = redis.createClient(6379);
+const cliente = redis.createClient();
 
 cliente.on('error', function(error) {
     console.error(error)
