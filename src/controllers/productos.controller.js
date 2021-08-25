@@ -1,4 +1,5 @@
 import Producto from '../models/productos.model';
+import cliente from '../redis';
 
 export const ProductosxDefecto = async (req, res) => {
     try {
@@ -22,7 +23,8 @@ export const ProductosxDefecto = async (req, res) => {
 export const Productos = async (req,res) => {
     try {
         const productos = await Producto.find();
-        res.json(productos)
+        cliente.setex('productos', 300, JSON.stringify(productos));
+        res.json(productos);
     } catch (error) { res.status(404).json(error); }
 };
 
@@ -34,6 +36,7 @@ export const CrearProducto = async (req, res) => {
             if (ProductoRepetido) {
                 res.status(400).json('El Producto ya existe');
             } else {
+                const productos = await Producto.find();
                 new Producto({ ...req.body }).save();
                 res.status(201).json({ msg: 'Producto creado con exito' });
             }
