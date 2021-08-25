@@ -38,7 +38,6 @@ export const CrearProducto = async (req, res) => {
             } else {
                 const productos = await Producto.find();
                 new Producto({ ...req.body }).save();
-                cliente.EXPIRE(productos, 1);
                 res.status(201).json({ msg: 'Producto creado con exito' });
             }
         } else { res.status(400).json({ msg: 'Faltan datos' }); }
@@ -53,7 +52,6 @@ export const ActualizarProductos = async (req, res) => {
             const updates = { ...req.body };
             const options = { new: true };
             await Producto.findByIdAndUpdate(id, updates, options);
-            cliente.EXPIRE(productos, 1);
             res.status(200).json({ msg: 'Producto editado con exito' });
         }
         else { res.status(400).json({ msg: 'Faltan datos' }); }
@@ -65,7 +63,6 @@ export const EliminarProductos = async (req, res) => {
         const { id } = req.params;
         if (id) {
             await Producto.findByIdAndDelete(id);
-            cliente.EXPIRE(productos, 1);
             res.status(200).json({msg: 'El producto fue eliminado con exito' });
         } else { res.status(400).json({ msg: 'Faltan datos' }); }
     } catch (error) { res.status(404).json(error); }
