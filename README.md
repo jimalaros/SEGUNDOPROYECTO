@@ -15,49 +15,39 @@ API REST en la cuál encontrarás funciones como:
 
 _Estas instrucciones te permitirán correr el proyecto y realizar las pruebas correspondientes._
 
-1. Descarga el repositorio en este [link](https://github.com/jimalaros/SEGUNDOPROYECTO) e instala los packages como se muestra a continuación.
-
-2. Al abrir este proyecto, ejecuta en consola el siguiente comando:
+1. Correr la terminal desde donde tengas descargado el archivo .pem, por ejemplo, si el archivo lo descargas en escritorio debes moverte a la carpeta de escritorio de la siguiente manera:
 
 ```
-cd SEGUNDOPROYECTO-master
+cd '/c/Users/Jimmy Arango/Desktop'
 ```
 
-3. Luego instala los paquetes para que la API funcione correctamente, ejecutando en consola el siguiente comando:
+2. Una vez dentro de la carpeta donde tengas el archivo .pem tendrás que correr el siguiente comando:
 
 ```
-npm install
+ssh ubuntu@... -i Keys.pem
 ```
 
-4. Antes de ejecutar la API o los test, tendrás que generar la carpeta dist, ejecutando el siguiente comando en consola:
+Siendo los ... la dirección IPv4 pública de la instancia de amazon
+
+3. Una vez ejecutado el comando anterior, tendrás que entrar a las carpetas donde esta alojado el proyecto, de la siguiente manera:
 
 ```
-npx babel src --out-dir dist
+cd TERCERSPRINT
 ```
 
-5. Antes de ejecutar la API y el test, tendrás que ejecutar el siguiente comando en otra consola:
-
 ```
-mongod
+cd SEGUNDOPROYECTO
 ```
 
-_Lo anterior es para que la base de datos se ejecute corectamente_
-
-6.  Después de generar la carpeta "dist" y tener la base de datos corriendo, podrás ejecutar el test del endpoint "Registro de usuarios", usando el siguiente comando:
+4. Para visualizar el contenido del proyecto jecuta en cada consola (2 instancias, 2 consolas) el siguiente comando:
 
 ```
-npm test
+pm2 start src/index.js --watch
 ```
 
-7. Después de generar la carpeta "dist" y tener la base de datos corriendo, podrás ejecutar la API, usando el siguiente comando:
+5. Dirigirse a la documentación de Swagger en el siguiente [link](https://apicommerce.tk/api/)
 
-```
-npm start
-```
-
-8. Dirigirse a la documentación de Swagger en el siguiente [link](http://localhost:5000/api-docs/)
-
-9. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API, de la siguiente forma:
+6. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API, de la siguiente forma:
 
 ```
 {
