@@ -1,12 +1,10 @@
 import redis from 'redis';
-import config from './config';
+import config from './config.js';
+import dotenv from 'dotenv';
 
-const REDIS_PORT = config.redisport;
+dotenv.config({ path: './.env' });
 
-const cliente = redis.createClient(REDIS_PORT);
-
-cliente.on('error', function(error) {
-    console.error(error)
-});
+const PORT_REDIS = process.env.REDISPORT;
+const cliente = redis.createClient(PORT_REDIS);
 
 export default cliente;
