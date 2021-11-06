@@ -11,6 +11,12 @@ API REST en la cuál encontrarás funciones como:
 
 # Comienzo 🚀
 
+Para iniciar sesión en [Amazon Web Services](https://aws.amazon.com/es/console/) 
+
+| Nombre de usuario |    contraseña   |    ID de cuenta   |
+|-------------------|-----------------|-------------------|
+|     Evaluador     | tvPuvK8EG7PWUyU$|      jimalaros    | 
+
 ## Instalación 🔧
 
 _Estas instrucciones te permitirán correr el proyecto y realizar las pruebas correspondientes._
@@ -118,6 +124,12 @@ El único usuario administrador es:
 |       correo         | contraseña |
 |----------------------|------------|
 | jimalaros25@mail.com |       12345|
+
+Datos de acceso a AWS:
+
+| Nombre de usuario |    contraseña   |    ID de cuenta   |
+|-------------------|-----------------|-------------------|
+|     Evaluador     | tvPuvK8EG7PWUyU$|      jimalaros    | 
 
 ## Construido con 🛠️
 
