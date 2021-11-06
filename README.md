@@ -134,6 +134,9 @@ El único usuario administrador es:
 * Swagger
 * Mocha
 * JWT
+* AWS
+
+![DIAGRAMA](https://github.com/jimalaros/SEGUNDOPROYECTO/blob/master/AWS.JPG?raw=true)
 
 ## Autores ✒️
 
