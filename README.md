@@ -18,8 +18,10 @@ _Estas instrucciones te permitirán correr el proyecto y realizar las pruebas co
 1. Correr la terminal desde donde tengas descargado el archivo .pem, por ejemplo, si el archivo lo descargas en escritorio debes moverte a la carpeta de escritorio de la siguiente manera:
 
 ```
-cd '/c/Users/Jimmy Arango/Desktop'
+cd '/c/Users/.../Desktop'
 ```
+
+Siendo los ... el nombre de usuario que tengas en tu computadora.
 
 2. Una vez dentro de la carpeta donde tengas el archivo .pem tendrás que correr el siguiente comando:
 
@@ -27,7 +29,7 @@ cd '/c/Users/Jimmy Arango/Desktop'
 ssh ubuntu@... -i Keys.pem
 ```
 
-Siendo los ... la dirección IPv4 pública de la instancia de amazon
+Siendo los ... la dirección IPv4 pública de la instancia de amazon.
 
 3. Una vez ejecutado el comando anterior, tendrás que entrar a las carpetas donde esta alojado el proyecto, de la siguiente manera:
 
