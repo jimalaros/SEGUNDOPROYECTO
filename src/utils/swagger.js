@@ -1,15 +1,14 @@
 export const swaggerOptions = {
-    definition: 
+    definition:
       {
         "openapi": "3.0.0",
         "info": {
-          "title": "SEGUNDO SPRINT",
-          "description": "Aplicación para que las personas se registren, inicien sesión y pidan los productos que deseen del restaurante",
+          "title": "TERCER SPRINT",
           "version": "1.0.0"
         },
         "servers": [
           {
-            "url": "http://localhost:5000",
+            "url": "https://apicommerce.tk",
             "description": "Servidor local"
           }
         ],
@@ -136,24 +135,6 @@ export const swaggerOptions = {
                 }
               },
               "responses": {
-                "404": {
-                  "description": "Not Found",
-                  "content": {
-                    "application/json": {
-                      "schema": {
-                        "type": "object",
-                        "properties": {
-                          "err": {
-                            "type": "string",
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "401": {
-                  "description": "Unauthorized",
-                },
                 "200": {
                   "description": "Ok",
                   "content": {
@@ -169,8 +150,26 @@ export const swaggerOptions = {
                     }
                   }
                 },
+                "401": {
+                  "description": "Unauthorized",
+                },
                 "400": {
                   "description": "Bad Request",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "err": {
+                            "type": "string",
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "404": {
+                  "description": "Not Found",
                   "content": {
                     "application/json": {
                       "schema": {
@@ -257,6 +256,21 @@ export const swaggerOptions = {
                     "application/json": {
                       "schema": {
                         "$ref": "#/components/schemas/Producto"
+                      }
+                    }
+                  }
+                },
+                "404": {
+                  "description": "No Content",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "err": {
+                            "type": "string",
+                          }
+                        }
                       }
                     }
                   }
@@ -956,7 +970,7 @@ export const swaggerOptions = {
                 "contraseña": {
                   "type": "string",
                   "example": "111111"
-                }, 
+                },
                 "administrador": {
                   "type": "boolean",
                   "example": false
@@ -1043,4 +1057,3 @@ export const swaggerOptions = {
       },
     apis: ['./src/routes*.js']
   };
-  
