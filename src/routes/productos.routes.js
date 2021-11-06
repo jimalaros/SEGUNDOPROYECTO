@@ -1,11 +1,10 @@
 import { Router } from 'express';
 import { Administrador } from '../middlewares/administrador.middleware';
 import * as Productos from '../controllers/productos.controller';
-import { cache } from '../middlewares/cache.middleware';
 
 const router = Router();
 
-router.get('/', cache, Productos.Productos);
+router.get('/', Productos.Productos);
 
 router.post('/nuevos', Administrador, Productos.CrearProducto);
 
