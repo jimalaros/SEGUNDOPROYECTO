@@ -1,29 +1,10 @@
-import Producto from '../models/productos.model';
-import cliente from '../redis';
-
-export const ProductosxDefecto = async (req, res) => {
-    try {
-        const contador = await Producto.estimatedDocumentCount();
-        // Verificación de productos existentes
-        if (contador > 0) return;
-        // Productos por defecto
-        const productos = await Promise.all([
-            new Producto({ nombre: 'Hamburguesa', precio: 5000 }).save(),
-            new Producto({ nombre: 'Hamburguesa doble', precio: 10500 }).save(),
-            new Producto({ nombre: 'Perro', precio: 5500 }).save(),
-            new Producto({ nombre: 'Perro especial', precio: 9000 }).save(),
-            new Producto({ nombre: 'Coca cola', precio: 3000 }).save(),
-            new Producto({ nombre: 'Sprite', precio: 2500 }).save(),
-            new Producto({ nombre: 'Agua', precio: 5000 }).save(),
-        ]);
-        res.json(productos);
-    } catch (error) { res.status(404).json(error); }
-};
+import Producto from '../models/productos.model.js';
+import cliente from '../redis.js';
 
 export const Productos = async (req,res) => {
     try {
         const productos = await Producto.find();
-        cliente.setex('productos', 300, JSON.stringify(productos));
+        cliente.set('productos', JSON.stringify(productos));
         res.json(productos);
     } catch (error) { res.status(404).json(error); }
 };
