@@ -37,7 +37,7 @@ Siendo los ... el nombre de usuario que tengas en tu computadora.
 ssh ubuntu@... -i Keys.pem
 ```
 
-Siendo los ... la dirección IPv4 pública de la instancia de amazon.
+Siendo los ... la dirección IPv4 pública de la instancia de amazon (solo se ejecutan 2, una cuya zona sea us-east-1a y otra cuya zona sea us-east-1b, las otras dos las generó el grupo de autoescalado).
 
 4. Una vez ejecutado el comando anterior, tendrás que entrar a las carpetas donde esta alojado el proyecto, de la siguiente manera:
 
