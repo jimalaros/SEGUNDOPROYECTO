@@ -21,7 +21,9 @@ Para iniciar sesión en [Amazon Web Services](https://aws.amazon.com/es/console/
 
 _Estas instrucciones te permitirán correr el proyecto y realizar las pruebas correspondientes._
 
-1. Correr la terminal desde donde tengas descargado el archivo .pem, por ejemplo, si el archivo lo descargas en escritorio debes moverte a la carpeta de escritorio de la siguiente manera:
+1. Descargar el archivo .pem adjunto en este repositorio.
+
+2. Correr la terminal desde donde tengas descargado el archivo .pem, por ejemplo, si el archivo lo descargas en escritorio debes moverte a la carpeta de escritorio de la siguiente manera:
 
 ```
 cd '/c/Users/.../Desktop'
@@ -29,7 +31,7 @@ cd '/c/Users/.../Desktop'
 
 Siendo los ... el nombre de usuario que tengas en tu computadora.
 
-2. Una vez dentro de la carpeta donde tengas el archivo .pem tendrás que correr el siguiente comando:
+3. Una vez dentro de la carpeta donde tengas el archivo .pem tendrás que correr el siguiente comando:
 
 ```
 ssh ubuntu@... -i Keys.pem
@@ -37,7 +39,7 @@ ssh ubuntu@... -i Keys.pem
 
 Siendo los ... la dirección IPv4 pública de la instancia de amazon.
 
-3. Una vez ejecutado el comando anterior, tendrás que entrar a las carpetas donde esta alojado el proyecto, de la siguiente manera:
+4. Una vez ejecutado el comando anterior, tendrás que entrar a las carpetas donde esta alojado el proyecto, de la siguiente manera:
 
 ```
 cd TERCERSPRINT
@@ -47,15 +49,15 @@ cd TERCERSPRINT
 cd SEGUNDOPROYECTO
 ```
 
-4. Para visualizar el contenido del proyecto jecuta en cada consola (2 instancias, 2 consolas) el siguiente comando:
+5. Para visualizar el contenido del proyecto jecuta en cada consola (2 instancias, 2 consolas) el siguiente comando:
 
 ```
 pm2 start src/index.js --watch
 ```
 
-5. Dirigirse a la documentación de Swagger en el siguiente [link](https://apicommerce.tk/api/)
+6. Dirigirse a la documentación de Swagger en el siguiente [link](https://apicommerce.tk/api/)
 
-6. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API, de la siguiente forma:
+7. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API, de la siguiente forma:
 
 ```
 {
